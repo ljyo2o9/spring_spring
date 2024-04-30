@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.5'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // spring_boot_starter_web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // spring_boot_data_jpa
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // mysql
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // lombok
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+
+    // spring_boot_configuration_processor
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    // spring_boot_starter_validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    // JWT
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
